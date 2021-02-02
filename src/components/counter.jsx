@@ -24,6 +24,10 @@ class Counter extends Component {
     // console.log("increment clicked", this.state.count);
   };
 
+  handleDecrement = () => {
+    this.setState({ value: this.state.value - 1 });
+  };
+
   render() {
     // {this.props.children} renders the title of the object
     return (
@@ -31,9 +35,21 @@ class Counter extends Component {
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
           onClick={() => this.handleIncrement()}
-          className="btn btn-secondary btn-sm"
+          className="btn btn-secondary btn-sm m-1"
         >
-          Increment
+          +
+        </button>
+        <button
+          onClick={() => this.handleDecrement()}
+          className="btn btn-secondary btn-sm m-1"
+        >
+          -
+        </button>
+        <button
+          onClick={() => this.props.onDelete(this.props.id)}
+          className="btn btn-danger btn-sm m-2"
+        >
+          Delete
         </button>
         <ul>{this.renderTags()}</ul>
       </div>
